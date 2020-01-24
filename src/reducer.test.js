@@ -66,3 +66,32 @@ test("ADD_HOUSE_MIDDLE inserts house in the middle", () => {
   expect(newState.find(obj => obj.name === "Slytherin")).toBeDefined();
   expect(newState).toContain(slytherin);
 });
+
+test("REMOVE_HOUSE_BY_INDEX", () => {
+  // given
+  const state = reducer(undefined, { type: "INIT" });
+  // when
+  const newState = reducer(state, {
+    type: "REMOVE_HOUSE_BY_INDEX",
+    index: 1
+  });
+  console.log({ state, newState });
+  // then
+  expect(newState.length).toBe(2);
+  expect(newState.find(obj => obj.index === 1)).toBeUndefined();
+});
+
+test("ADD_POINTS", () => {
+  // given
+  const state = reducer(undefined, { type: "INIT" });
+  const gryffindor = state[0];
+  // when
+  const newState = reducer(state, {
+    type: "ADD_POINTS",
+    house: gryffindor,
+    points: 66
+  });
+  console.log({ state, newState });
+  // then
+  expect(newState[0].points).toBe(116);
+});
