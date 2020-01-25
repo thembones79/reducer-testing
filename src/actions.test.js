@@ -8,6 +8,15 @@ import {
   fetchProducts
 } from "./actions";
 
+const mockFetch = data => {
+  return jest.fn().mockImplementation(() => {
+    Promise.resolve({
+      ok: true,
+      json: () => data
+    });
+  });
+};
+
 test("fetchProductsBegin", () => {
   const result = fetchProductsBegin();
   expect(result.type).toEqual(FETCH_PRODUCTS_BEGIN);
@@ -28,3 +37,20 @@ test("fetchProductsFailure", () => {
   expect(result.type).toEqual(FETCH_PRODUCTS_FAILURE);
   expect(result.payload).toEqual({ error });
 });
+
+/*
+
+describe("fetchProducts", () => {
+  it("fetches products", async () => {
+    global.fetch = mockFetch({
+      data: {
+        childern: [{ data: { id: 1 } }, { data: { id: 2 } }]
+      }
+    });
+    const dispatch = jest.fn();
+    await fetchProducts()(dispatch);
+    expect(dispatch.mock.calls.length).toBe(2);
+  });
+});
+
+*/
