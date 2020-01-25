@@ -44,7 +44,7 @@ test("ADD_HOUSE_AFTER inserts house at the end", () => {
     type: "ADD_HOUSE_AFTER",
     house: slytherin
   });
-  console.log({ state, newState });
+  //console.log({ state, newState });
   // then
   expect(newState.length).toBe(4);
   expect(newState[3]).toBe(slytherin);
@@ -58,7 +58,7 @@ test("ADD_HOUSE_MIDDLE inserts house in the middle", () => {
     type: "ADD_HOUSE_MIDDLE",
     house: slytherin
   });
-  console.log({ state, newState });
+  //console.log({ state, newState });
   // then
   expect(newState.length).toBe(4);
   expect(newState[3]).not.toBe(slytherin);
@@ -75,7 +75,7 @@ test("REMOVE_HOUSE_BY_INDEX", () => {
     type: "REMOVE_HOUSE_BY_INDEX",
     index: 1
   });
-  console.log({ state, newState });
+  //console.log({ state, newState });
   // then
   expect(newState.length).toBe(2);
   expect(newState.find(obj => obj.index === 1)).toBeUndefined();
@@ -91,7 +91,7 @@ test("ADD_POINTS", () => {
     house: gryffindor,
     points: 66
   });
-  console.log({ state, newState });
+  // console.log({ state, newState });
   // then
   expect(newState[0].points).toBe(116);
 });
